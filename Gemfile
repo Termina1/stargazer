@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim', '~> 2.0.2'
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
+gem "rails-backbone"
+gem 'react-rails'
 
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
