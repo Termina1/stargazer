@@ -1,0 +1,41 @@
+@mixin gen-distance($times, $rule, $word)
+  $name: ""
+
+  $dist: 5px
+
+  @if $times > 1
+    $name: "d" + $times + "-"
+    $dist: 5px * $times
+
+  .#{$name}#{$word}
+    #{$rule}: $dist
+
+  .#{$name}#{$word}-top
+    #{$rule}-top: $dist !important
+
+  .#{$name}#{$word}-right
+    #{$rule}-right: $dist !important
+
+  .#{$name}#{$word}-bottom
+    #{$rule}-bottom: $dist !important
+
+  .#{$name}#{$word}-left
+    #{$rule}-left: $dist !important
+
+  .#{$name}#{$word}-ends
+    #{$rule}-top: $dist !important
+    #{$rule}-bottom: $dist !important
+
+  .#{$name}#{$word}-sides
+    #{$rule}-right: $dist !important
+    #{$rule}-left: $dist !important
+
+@mixin gen-push($times)
+  +gen-distance($times, margin, push)
+
+@mixin gen-soft($times)
+  +gen-distance($times, padding, soft)
+
+@for $i from 0 through 10
+  +gen-push($i)
+  +gen-soft($i)
