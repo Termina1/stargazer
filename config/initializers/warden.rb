@@ -10,7 +10,7 @@ class Warden::SessionSerializer
   end
 
   def deserialize(id)
-    User.where(id: id).find
+    User.where(id: id["$oid"].to_s).first
   end
 end
 

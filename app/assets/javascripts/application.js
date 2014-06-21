@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require underscore
+//= require react
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
+//= require backbone_react
 //= require backbone/stargazer
 //= require_tree .

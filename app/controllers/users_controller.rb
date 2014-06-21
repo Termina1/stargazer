@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    repos = Repository.in(name: user.repos).text_search(params[:query]).to_a
-    render json: repos, each_serializer: UserSerializer
+    if params[:query].present?
+      repos = Repository.in(name: user.repos).text_search(params[:query]).to_a
+    else
+      repos = []
+    end
+    render json: repos, each_serializer: UserSerializer, root: false
   end
 
   protected

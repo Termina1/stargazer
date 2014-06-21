@@ -9,3 +9,9 @@ window.Stargazer =
   Collections: {}
   Routers: {}
   Views: {}
+
+$(document).ready ->
+
+  if $('.js-user-search').length
+    view = new Stargazer.Views.SearchView
+    React.renderComponent view, $('.js-user-search')[0]
