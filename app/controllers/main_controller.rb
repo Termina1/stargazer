@@ -4,4 +4,7 @@ class MainController < ApplicationController
       redirect_to user_path(warden.user)
     end
   end
+
+  def about
+  end
 end

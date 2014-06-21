@@ -29,19 +29,21 @@ html lang="en"
             var USER_ID = '#{warden.user.nil? ? false : warden.user.id.to_s}';
           = javascript_include_tag "application"
   body
-    .navbar.navbar-fluid-top
-      .navbar-inner
-        .container-fluid
-          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.brand href="/"  Stargazer
-          .container-fluid.nav-collapse
-            ul.nav
-              li= link_to "About", "/about"
-    .container-fluid
-      .row-fluid
-        .span12
+    a href="https://github.com/Termina1/stargazer"
+      img alt=("Fork me on GitHub") data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" style=("position: absolute; top: 0; right: 0; border: 0; z-index: 10000;") /
+
+    .navbar.navbar-default.navbar-static-top
+      .container
+        button.navbar-toggle data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button"
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand href="/"  Stargazer
+        .navbar-collapse.collapse.navbar-responsive-collapse
+          ul.nav.navbar-nav
+            li= link_to "About", "/about"
+    .container
+      .row
+        .col-lg-12
           = bootstrap_flash
           = yield

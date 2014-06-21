@@ -5,13 +5,15 @@ Stargazer.Views.SearchResults = React.createBackboneClass
   render: ->
     results = this.props.results.map (result) ->
       `(
-        <li>
-          <a href={'http://github.com/' + result.get('name')}>{result.get('name')}</a>
-          <p>{result.get('description')}</p>
-        </li>
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <a href={'http://github.com/' + result.get('name')}>{result.get('name')}</a>
+          </div>
+          <div className="panel-body">{result.get('description')}</div>
+        </div>
       )`
     `(
-      <ul className="d10-push-bottom">
+      <div className="d10-push-ends">
         {results}
-      </ul>
+      </div>
     )`

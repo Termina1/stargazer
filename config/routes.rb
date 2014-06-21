@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'main#index'
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/about', to: 'main#about'
   resources :users do
     get :search, on: :member
   end
