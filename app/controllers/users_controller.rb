@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def show
+    user = getUser
+    if user.indexed.nil? || Chronic.parse('2 days ago') < user.indexed
+      StarService.delay.importFor(user.id.to_s)
+    end
   end
 
   def search
@@ -13,7 +17,7 @@ class UsersController < ApplicationController
 
   protected
 
-  def user
+  def getUser
     User.where(id: params[:id]).first
   end
 end

@@ -1,6 +1,7 @@
 class StarService
 
-  def self.importFor(user)
+  def self.importFor(userId)
+    user = User.where(id: userId).first
     github = Github.new oauth_token: user.token
     page = 1
     per_page = 100
@@ -13,6 +14,7 @@ class StarService
       break if repos.count == 0
     end
     user.repos = allrepos
+    user.indexed = Time.now
     user.save
     allrepos.each{ |el| Redis.current.publish "starray", el }
   end
