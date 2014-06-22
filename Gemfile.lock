@@ -75,6 +75,9 @@ GEM
     capistrano-rails (1.1.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.1)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     chronic (0.10.2)
@@ -250,7 +253,9 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   bcrypt (~> 3.1.7)
+  capistrano (~> 3.2.0)
   capistrano-rails
+  capistrano-rvm
   chronic
   coffee-rails (~> 4.0.0)
   github_api (~> 0.11.3)

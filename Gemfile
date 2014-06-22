@@ -21,6 +21,9 @@ gem 'redis-objects'
 gem 'active_model_serializers'
 gem 'sidekiq'
 gem 'chronic'
+gem 'capistrano', '~> 3.2.0'
+gem 'capistrano-rvm'
+gem 'capistrano-rails'
 
 gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
