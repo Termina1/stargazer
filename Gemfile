@@ -31,6 +31,5 @@ gem 'pry'
 
 group :development do
   gem 'spring'
-  gem 'capistrano-rails'
 end
 
