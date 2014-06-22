@@ -11,7 +11,4 @@ class Repository
 
   index({searchfield: "text"})
 
-  def self.search(query, user)
-    binding.pry
-  end
 end

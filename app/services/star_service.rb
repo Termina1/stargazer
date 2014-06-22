@@ -16,7 +16,7 @@ class StarService
     user.repos = allrepos
     user.indexed = Time.now
     user.save
-    allrepos.each{ |el| Redis.current.publish "starray", el }
+    allrepos.each{ |el| Redis.current.publish Rails.application.secrets.github_client, el }
   end
 
 end
