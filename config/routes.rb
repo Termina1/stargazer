@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :users do
     get :search, on: :member
   end
+  mount Sidekiq::Web => '/sidekiq'
 end
