@@ -9,6 +9,14 @@ GIT
       react-source (= 0.10.0)
 
 GIT
+  remote: git://github.com/seuros/capistrano-puma.git
+  revision: 7b6034946f9d09439ba81eeef177c5d47d1440ac
+  specs:
+    capistrano3-puma (0.5.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 1d93c5a77049b3d21d17c847ad0531d7714fa229
   branch: bootstrap3
@@ -262,6 +270,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capistrano-sidekiq
+  capistrano3-puma!
   chronic
   coffee-rails (~> 4.0.0)
   github_api (~> 0.11.3)
