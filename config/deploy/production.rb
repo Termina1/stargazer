@@ -15,7 +15,7 @@ set :puma_init_active_record, false
 set :puma_preload_app, true
 
 task :load_envs do
-  exec "#{shared_path}/env.sh"
+  exec "#{shared_path}/envs.sh"
 end
 
 after "deploy:started", "load_envs"
