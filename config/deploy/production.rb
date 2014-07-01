@@ -14,8 +14,12 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, false
 set :puma_preload_app, true
 
-task :load_envs do
-  exec "#{shared_path}/envs.sh"
+task :create_indexes do
+  on roles(:app) do
+    within release_path do
+      execute :rake, "db:mongoid:create_indexes"
+    end
+  end
 end
 
-after "deploy:started", "load_envs"
+after "deploy:publishing", "create_indexes"
