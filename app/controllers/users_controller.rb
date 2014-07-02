@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def search
     if params[:query].present?
-      repos = Repository.in(name: user.repos).text_search(params[:query]).to_a
+      repos = Repository.in(name: getUser.repos).text_search(params[:query]).to_a
     else
       repos = []
     end
