@@ -10,5 +10,6 @@ class Repository
   field :searchfield, type: String
 
   index({searchfield: "text"})
+  index({ name: 1 }, { unique: true, background: true })
 
 end
