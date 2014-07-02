@@ -13,7 +13,7 @@ Used Rails 4.1 and Ruby 2.1.
 
 Built on top of [http://www.mongodb.org/](MongoDB) for persistence and [http://redis.io/](Redis) for Pub/Sub.
 
-## Config
+## Config in secrets.yml
 
 1. github_client: Client id for github app
 2. github_secret: Client secret for github app
