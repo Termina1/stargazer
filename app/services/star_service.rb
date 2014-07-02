@@ -16,7 +16,10 @@ class StarService
     user.repos = allrepos
     user.indexed = Time.now
     user.save
-    allrepos.each{ |el| Redis.current.publish Rails.application.secrets.redis_channel, el }
+    allrepos.each do |el|
+      msg = el + "/" + user.token
+      Redis.current.publish Rails.application.secrets.redis_channel, msg
+    end
   end
 
 end
