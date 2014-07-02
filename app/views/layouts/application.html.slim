@@ -26,7 +26,7 @@ html lang="en"
           /! Size should be 32 x 32 pixels
           = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
           javascript:
-            var USER_ID = '#{warden.user.nil? ? false : warden.user.id.to_s}';
+            var USER_ID = '#{@user ? @user.id.to_s : warden.user.nil? ? false : warden.user.id.to_s}';
           = javascript_include_tag "application"
   body
     .navbar.navbar-default.navbar-static-top

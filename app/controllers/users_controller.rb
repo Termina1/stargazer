@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def show
-    user = getUser
-    if user.indexed.nil? || Chronic.parse('2 days ago') < user.indexed
-      StarService.delay.importFor(user.id.to_s)
+    @user = getUser
+    if @user.indexed.nil? || Chronic.parse('2 days ago') < @user.indexed
+      StarService.delay.importFor(@user.id.to_s)
     end
   end
 
