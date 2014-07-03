@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/about', to: 'main#about'
   resources :users do
     get :search, on: :member
+    post :reindex, on: :member
   end
   mount Sidekiq::Web => '/sidekiq'
 end

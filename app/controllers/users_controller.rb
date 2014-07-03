@@ -6,6 +6,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def reindex
+    user = getUser
+    if Chronic.parse('5 minutes ago') < user.indexed
+      render json: {error: "You're trying to reindex too often"}
+    else
+      user.update_attribute :indexed, Time.now
+      StarService.delay.importFor(user.id.to_s)
+      render json: {ok: true}
+    end
+  end
+
   def search
     if params[:query].present?
       repos = Repository.in(name: getUser.repos).text_search(params[:query]).to_a
