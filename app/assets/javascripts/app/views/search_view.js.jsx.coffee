@@ -15,6 +15,15 @@
     @handlers =
       search: searchHandler
 
+  componentDidMount: ->
+    $('.js-waypoint').waypoint (direction) =>
+      if direction is 'down'
+        @props.actions.nextPageAction.onNext(1)
+    , offset: 'bottom-in-view'
+
+  componentDidUpdate: ->
+    $.waypoints 'refresh'
+
   render: ->
     `(
       <div className="user-search d10-push-top">

@@ -4,5 +4,6 @@
 //= require react
 //= require rx.lite
 //= require rx.async
+//= require waypoints
 //= require event_handler
 //= require app.coffee

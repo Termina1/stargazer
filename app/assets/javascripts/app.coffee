@@ -9,6 +9,8 @@ $(document).ready ->
     store = new SearchStore
     actions = new SearchActions(store.updates)
 
+    window.test = actions
+
     view = new SearchView actions: actions, store: store
     reindex = new ReindexButton
     React.renderComponent view, $('.js-user-search')[0]

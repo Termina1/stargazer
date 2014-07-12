@@ -19,7 +19,10 @@ class UsersController < ApplicationController
 
   def search
     if params[:query].present?
-      repos = Repository.in(name: getUser.repos).text_search(params[:query]).to_a
+      repos = Repository.in(name: getUser.repos)
+        .limit((params[:page].to_i + 1) * 100)
+        .text_search(params[:query])
+        .to_a.drop(params[:page].to_i * 100)
     else
       repos = []
     end
