@@ -1,6 +1,6 @@
 ###* @jsx React.DOM ###
 
-Stargazer.Views.ReindexButton = React.createBackboneClass
+@ReindexButton = React.createClass
 
   reindex: (event) ->
     return if $('.js-reindex-btn').attr('disabled')
