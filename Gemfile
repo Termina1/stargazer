@@ -25,6 +25,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'puma'
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'rxjs-rails', '~> 2.2.27'
 
 group :development do
   gem 'pry'
