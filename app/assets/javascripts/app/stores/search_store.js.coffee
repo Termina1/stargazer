@@ -1,9 +1,7 @@
 class @SearchStore
   constructor: ->
-    @updates = new Rx.BehaviorSubject(searchResults: [])
+    @updates = new Rx.BehaviorSubject(searchResults: [], page: 0)
 
-    @results = @updates.scan((results, action) ->
-      searchResults: action results.searchResults
-    )
+    @results = @updates.scan((results, action) -> action results)
 
     @results.subscribe()

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  PER_PAGE = 50
+
   def show
     @user = getUser
     if @user.indexed.nil? || Chronic.parse('2 days ago') < @user.indexed
@@ -20,13 +22,15 @@ class UsersController < ApplicationController
   def search
     if params[:query].present?
       repos = Repository.in(name: getUser.repos)
-        .limit((params[:page].to_i + 1) * 100)
+        .limit((params[:page].to_i + 1) * PER_PAGE)
         .text_search(params[:query])
-        .to_a.drop(params[:page].to_i * 100)
+        .to_a.drop(params[:page].to_i * PER_PAGE)
     else
       repos = []
     end
-    render json: repos, each_serializer: UserSerializer, root: false
+    render json: repos, each_serializer: UserSerializer, root: "searchResults", meta: {
+      page: params[:page]
+    }
   end
 
   protected
