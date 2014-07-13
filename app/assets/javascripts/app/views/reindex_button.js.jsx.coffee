@@ -2,21 +2,28 @@
 
 @ReindexButton = React.createClass
 
-  reindex: (event) ->
-    return if $('.js-reindex-btn').attr('disabled')
-    $.post "/users/#{USER_ID}/reindex", (result) ->
-      if result.ok
-        $('.js-error').text('')
-        $('.js-reindex-btn').removeClass('btn-primary')
-          .addClass('btn-success')
-          .attr disabled: "disabled"
-      else
-        $('.js-error').text(result.error)
+  getInitialState: -> error: "", disabled: false, done: false
+
+  componentWillMount: ->
+    reindexHandler = EventHandler.create()
+    reindexHandler
+      .filter(=> not @state.disabled)
+      .subscribe @props.actions.reindexAction
+
+    @props.store.updates.subscribe (data) =>
+      @setState data if data.done
+
+    @handlers = reindex: reindexHandler
 
   render: ->
+    if @state.done and not @state.error
+      cls = 'btn-success'
+    else
+      cls = 'btn-primary'
+    disabled = if @state.disabled then "disabled" else ""
     `(
       <div>
-        <button className="btn btn-primary reindex-btn js-reindex-btn" onClick={this.reindex}>Reindex</button>
-        <code><span className="js-error error"></span></code>
+        <button className={"btn reindex-btn " + cls} disabled={disabled} onClick={this.handlers.reindex}>Reindex</button>
+        <code><span className="js-error error">{this.state.error}</span></code>
       </div>
     )`
