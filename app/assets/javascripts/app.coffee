@@ -9,7 +9,7 @@ $(document).ready ->
 
     store = new SearchStore
     actions = new SearchActions store.updates
-    reindex = new ReindexActions store.updates
+    reindex = new ReindexActions store.reindexes
 
     view = new SearchView actions: actions, store: store
     reindex = new ReindexButton actions: reindex, store: store

@@ -10,8 +10,7 @@
       .filter(=> not @state.disabled)
       .subscribe @props.actions.reindexAction
 
-    @props.store.updates.subscribe (data) =>
-      @setState data if data.done
+    @props.store.reindexes.subscribe @setState.bind(this)
 
     @handlers = reindex: reindexHandler
 
