@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def reindex_only
+    StarService.reindex(getUser)
+    render json: {ok: true}
+  end
+
   def reindex
     user = getUser
     if Chronic.parse('5 minutes ago') < user.indexed
