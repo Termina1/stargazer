@@ -1,11 +1,14 @@
 table.table
   thead
+    th ID
     th User
     th Starred
     th Indexed
   tbody
     - @users.each do |user|
-      td
-        a href="/admin/users/#{user[:name]}" = user[:name]
-      td= user[:repos]
-      td= user[:indexed]
+      tr
+        td= user[:id]
+        td
+          a href="/admin/users/#{user[:name]}" = user[:name]
+        td= user[:repos]
+        td= user[:indexed]
