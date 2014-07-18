@@ -23,6 +23,8 @@ class StarService
     user.repos.each do |el|
       if token.present?
         msg = el + "/" + user.token
+      else
+        msg = el
       end
       Redis.current.publish Rails.application.secrets.redis_channel, msg
     end
