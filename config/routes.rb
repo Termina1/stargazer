@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     get :search, on: :member
     post :reindex, on: :member
   end
-  mount Sidekiq::Web => '/sidekiq'
+  namespace :admin do
+    mount Sidekiq::Web => '/sidekiq'
+    get '/', to: 'admin#index'
+    get '/users/:name', to: 'admin#user'
+  end
 end

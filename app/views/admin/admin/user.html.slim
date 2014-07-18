@@ -1,0 +1,14 @@
+p
+  a href="/admin" Back
+
+div
+  | Not indexed: #{@usera[:not_indexed].count}
+  ul
+    - @usera[:not_indexed].each do |repo|
+      li= repo
+
+div
+  | Indexed: #{@usera[:indexed].count}
+  ul
+    - @usera[:indexed].each do |repo|
+      li= repo

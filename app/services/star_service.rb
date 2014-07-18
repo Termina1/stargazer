@@ -22,4 +22,21 @@ class StarService
     end
   end
 
+  def self.get_indexed_stars
+    users = User.all.map{ |el| { name: el.username, repos: el.repos } }
+    users.each do |user|
+      user[:indexed] = Repository.in(name: user[:repos]).count()
+      user[:repos] = user[:repos].count
+    end
+    users
+  end
+
+  def self.get_indexed_stars_by_user(name)
+    user = User.where(username: name).first
+    starred = user.repos
+    indexed = Repository.in(name: user[:repos]).map{ |el| el.name }
+    not_indexed = starred - indexed
+    {user: name, starred: starred, indexed: indexed, not_indexed: not_indexed}
+  end
+
 end
