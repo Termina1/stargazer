@@ -7,7 +7,8 @@ table.table
   tbody
     - @users.each do |user|
       tr class="#{user[:repos] != user[:indexed] ? 'danger' : '' }"
-        td= user[:id]
+        td
+          a href="/users/#{user[:id]}"= user[:id]
         td
           a href="/admin/users/#{user[:name]}" = user[:name]
         td= user[:repos]
