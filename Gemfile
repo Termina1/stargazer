@@ -13,10 +13,10 @@ gem 'slim', '~> 2.0.2'
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'rails-backbone'
 gem 'react-rails', github: 'reactjs/react-rails'
-gem 'omniauth', '~> 1.2.1'
+gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-github', '~> 1.1.2'
 gem 'rails_warden', '~> 0.5.8'
-gem 'github_api', '~> 0.11.3'
+gem 'github_api', '~> 0.13.1'
 gem 'redis-objects'
 gem 'active_model_serializers'
 gem 'sidekiq'
@@ -36,4 +36,3 @@ group :development do
   gem 'capistrano-sidekiq'
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
 end
-

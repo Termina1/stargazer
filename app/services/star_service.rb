@@ -34,7 +34,7 @@ class StarService
     users = User.all.map{ |el| { id: el.id.to_s, name: el.username, repos: el.repos } }
     users.each do |user|
       user[:indexed] = Repository.in(name: user[:repos]).count()
-      user[:repos] = user[:repos].count
+      user[:repos] = user[:repos].nil? ? 0 : user[:repos].count
     end
     users
   end
