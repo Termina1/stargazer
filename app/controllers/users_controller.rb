@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = getUser
-    if @user.indexed.nil? || Chronic.parse('2 days ago') < @user.indexed
+    if @user.indexed.nil? || Chronic.parse('2 days ago') < @user.indexed || warden.user[:admin].present?
       StarService.delay.importFor(@user.id.to_s)
     end
   end
