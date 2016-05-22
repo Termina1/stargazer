@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def reindex
     user = getUser
-    if Chronic.parse('5 minutes ago') < user.indexed
+    if user.indexed.nil? || Chronic.parse('5 minutes ago') < user.indexed
       render json: {error: "You're trying to reindex too often"}
     else
       user.update_attribute :indexed, Time.now
